@@ -7,7 +7,7 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -20,9 +20,10 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
+    "element-plus": "^2.10.5",
     "leaflet": "^1.9.4",
     "leaflet-coord-converter-xiaoai": "^1.0.3",
-    "leaflet-trackplayer-xiaoai": "^2.0.7",
+    "leaflet-trackplayer-xiaoai": "^2.0.11",
     "pinia": "^3.0.3",
     "tailwindcss": "^4.1.11",
     "vue": "^3.5.18",
@@ -50,6 +51,7 @@
     "oxlint": "~1.8.0",
     "prettier": "3.6.2",
     "typescript": "~5.8.0",
+    "unplugin-element-plus": "^0.10.0",
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-vue-devtools": "^8.0.0",
     "vitest": "^3.2.4",

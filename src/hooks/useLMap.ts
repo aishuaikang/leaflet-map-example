@@ -1,7 +1,11 @@
 import L from 'leaflet'
 import { onMounted, ref, useTemplateRef } from 'vue'
 
-const useLMap = <Keys extends string = string>(key: Keys, onMapReady: (map: L.Map) => void) => {
+const useLMap = <Keys extends string = string>(
+  key: Keys,
+  options: L.MapOptions = {},
+  onMapReady: (map: L.Map) => void,
+) => {
   const mapRef = useTemplateRef<HTMLElement>(key)
   const mapInstance = ref<L.Map | null>(null)
 
@@ -15,6 +19,7 @@ const useLMap = <Keys extends string = string>(key: Keys, onMapReady: (map: L.Ma
       // center: [39.907777, 116.391193], // 谷歌坐标
       // center: [51.505, -0.09],
       zoom: 13,
+      ...options,
     })
 
     mapInstance.value = map
