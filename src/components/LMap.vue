@@ -18,11 +18,17 @@ defineOptions({
   name: 'LMapComponent',
 })
 
+const emit = defineEmits<{
+  (e: 'mapReady', map: L.Map): void
+}>()
+
 useLMap(
   'lmap',
   {
   },
-  (lmap) => {
+    (lmap) => {
+    emit('mapReady', lmap)
+    
     // 高德矢量地图
     const gcj02Layer = L.tileLayer(
       'https://webrd04.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}',
@@ -78,16 +84,18 @@ useLMap(
       .openOn(lmap)
 
     // 添加轨迹点标记
-    const track = new L.TrackPlayer(path, {
+        const track = new L.TrackPlayer(path, {
+            // showArrows:false,
+            // arrowSize:4,
       markerIcon: L.icon({
         iconUrl: uavIcon,
-        iconSize: [32, 32],
+        iconSize: [32, 32], 
         iconAnchor: [16, 16],
         popupAnchor: [0, -16],
       }),
       markerRotation: true,
       notPassedLineColor: '#ccc',
-      speed: 800,
+    //   speed: 800, 
       markerRotationOffset: 180,
       // polylineDecoratorOptions: {
       //   patterns: [],
